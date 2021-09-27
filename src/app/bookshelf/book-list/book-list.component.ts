@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Book } from 'src/app/shared/book/book.model';
 
 @Component({
@@ -7,6 +7,7 @@ import { Book } from 'src/app/shared/book/book.model';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
+  @Output() currentSelectedBook = new EventEmitter<Book>();
   myBooks: Book[] = [
     new Book(
       'Test Book 1',
@@ -37,4 +38,9 @@ export class BookListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleBookSelected(book: Book) {
+    // console.log('BOOK:', book);
+    this.currentSelectedBook.emit(book);
+  }
 }
