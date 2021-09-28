@@ -10,28 +10,22 @@ export class BookListComponent implements OnInit {
   @Output() bookWasSelected = new EventEmitter<Book>();
   myBooks: Book[] = [
     new Book(
-      'Test Book 1',
+      'Book of Testing',
       'Will Wilder',
       'Mystery',
       'https://source.unsplash.com/50x50/?mystery,book'
     ),
     new Book(
-      'Test Book 2',
-      'Will Wilder',
-      'Non-Fiction',
-      'https://source.unsplash.com/50x50/?serious,book'
+      'Testing Title 2',
+      'Bill',
+      'Science',
+      'https://source.unsplash.com/50x50/?science,book'
     ),
     new Book(
-      'Test Book 3',
-      'Will Wilder',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'Test Book 4',
-      'Will Wilder',
+      'Fantasy Test',
+      'Rando',
       'Non-Fiction',
-      'https://source.unsplash.com/50x50/?serious,book'
+      'https://source.unsplash.com/50x50/?fantasy,book'
     ),
   ];
 
@@ -39,7 +33,7 @@ export class BookListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onBookSelected(book: Book) {
+  onBookSelected(book: Book){
     this.bookWasSelected.emit(book);
   }
 }

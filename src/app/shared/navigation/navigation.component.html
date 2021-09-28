@@ -5,10 +5,10 @@
     type="button"
     data-toggle="collapse"
     data-target="#navbarToggler"
-    aria-label="Toggle navigation"
     aria-controls="navbarToggler"
     aria-expanded="false"
     (click)="collapsed = !collapsed"
+    aria-label="Toggle navigation"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,9 +21,7 @@
   >
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#" (click)="onSelect('bookshelf')"
-          >Bookshelf</a
-        >
+        <a class="nav-link" href="#" (click)="onSelect('bookshelf')">Bookshelf</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" (click)="onSelect('library')">Library</a>
