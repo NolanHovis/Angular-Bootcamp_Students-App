@@ -1,11 +1,11 @@
 <div class="container">
-  <app-nav></app-nav>
+  <app-nav (featureSelected)="onNavigate($event)"></app-nav>
 
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <app-bookshelf></app-bookshelf>
+      <app-bookshelf *ngIf="loadedFeature === 'bookshelf'"></app-bookshelf>
       <hr />
-      <app-library></app-library>
+      <app-library *ngIf="loadedFeature === 'library'"></app-library>
     </div>
   </div>
 </div>
