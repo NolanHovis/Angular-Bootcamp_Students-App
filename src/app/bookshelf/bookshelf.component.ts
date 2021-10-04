@@ -1,5 +1,6 @@
 import { Book } from './../shared/book/book.model';
 import { Component, OnInit } from '@angular/core';
+import { BookshelfService } from './bookshelf.service';
 
 @Component({
   selector: 'app-bookshelf',
@@ -9,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class BookshelfComponent implements OnInit {
   selectedBook: Book;
 
-  constructor() {}
+  constructor(private bookshelfService: BookshelfService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bookshelfService.bookSelected.subscribe((book: Book) => {
+      this.selectedBook = book;
+    });
+  }
 }
