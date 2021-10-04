@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Book } from 'src/app/shared/book/book.model';
+import { Book } from './../../shared/book/book.model';
+import { BookshelfService } from './../bookshelf.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-book-list',
@@ -7,40 +8,22 @@ import { Book } from 'src/app/shared/book/book.model';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
-  @Output() currentSelectedBook = new EventEmitter<Book>();
-  myBooks: Book[] = [
-    new Book(
-      'Test Book 1',
-      'Will Wilder',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'Test Book 2',
-      'Will Wilder',
-      'Non-Fiction',
-      'https://source.unsplash.com/50x50/?serious,book'
-    ),
-    new Book(
-      'Test Book 3',
-      'Will Wilder',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'Test Book 4',
-      'Will Wilder',
-      'Non-Fiction',
-      'https://source.unsplash.com/50x50/?serious,book'
-    ),
-  ];
+  @Input() book: Book;
+  myBooks: Book[] = [];
 
-  constructor() {}
+  constructor(private bookshelfService: BookshelfService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Use the Service to set the local "myBooks" array to the Service/Glboal "myBooks" array
+    this.myBooks = this.bookshelfService.getBooks();
 
-  handleBookSelected(book: Book) {
-    // console.log('BOOK:', book);
-    this.currentSelectedBook.emit(book);
+    // Listen for changes on the global "myBooks" arary and update the local version
+    this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
+      this.myBooks = books;
+    });
+  }
+
+  onRemoveBook(idx: number) {
+    this.bookshelfService.removeBook(idx);
   }
 }

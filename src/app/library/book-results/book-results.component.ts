@@ -1,3 +1,5 @@
+import { BookshelfService } from './../../bookshelf/bookshelf.service';
+import { LibraryService } from './../library.service';
 import { Book } from './../../shared/book/book.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,34 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-results.component.css'],
 })
 export class BookResultsComponent implements OnInit {
-  allBooks: Book[] = [
-    new Book(
-      'API Book 1',
-      'Will Wilder',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'API Book 2',
-      'Will Wilder',
-      'Non-Fiction',
-      'https://source.unsplash.com/50x50/?serious,book'
-    ),
-    new Book(
-      'API Book 3',
-      'Will Wilder',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'API Book 4',
-      'Will Wilder',
-      'Non-Fiction',
-      'https://source.unsplash.com/50x50/?serious,book'
-    ),
-  ];
+  allBooks: Book[] = [];
 
-  constructor() {}
+  constructor(
+    private bookshelfService: BookshelfService,
+    private libraryService: LibraryService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Bring Global "apiBooks" array into the Local "allBooks" array
+    this.allBooks = this.libraryService.getBooks();
+  }
+
+  onSaveBook(book: Book) {
+    // Pass this to the "bookshelfService" "myBooks" array
+    this.bookshelfService.saveBook(book);
+  }
 }
