@@ -1,11 +1,9 @@
 <div class="container">
-  <app-nav (currentPage)="onNavigatePage($event)"></app-nav>
+  <app-nav></app-nav>
 
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <app-bookshelf *ngIf="pageDisplayed === 'bookshelf'"></app-bookshelf>
-      <hr />
-      <app-library *ngIf="pageDisplayed === 'library'"></app-library>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

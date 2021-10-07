@@ -41,6 +41,13 @@ export class BookshelfService {
     return this.myBooks.slice();
   }
 
+  getBook(idx: number) {
+    return this.myBooks.slice()[idx];
+
+    // const myArray = ['a', 'b', 'c']
+    // myArray[2] === 'c'
+  }
+
   // CREATE
   saveBook(book: Book) {
     this.myBooks.push(book);

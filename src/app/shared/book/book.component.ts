@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BookComponent implements OnInit {
   @Input() book: Book;
+  @Input() idx: number;
 
   constructor(private bookshelfService: BookshelfService) {}
 
