@@ -1,4 +1,8 @@
-<a href="#" class="list-group-item clearfix" (click)="onBookSelected()">
+<a
+  class="list-group-item clearfix"
+  [routerLink]="[id]"
+  routerLinkActive="active"
+>
   <!-- Left Side = Book Info -->
   <div class="float-left">
     <h4 class="list-group-item-heading">{{ book.title }}</h4>

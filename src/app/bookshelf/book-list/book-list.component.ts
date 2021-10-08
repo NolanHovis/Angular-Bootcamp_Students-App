@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+=======
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+>>>>>>> Stashed changes
 import { Book } from 'src/app/shared/book/book.model';
 
 @Component({
@@ -7,6 +12,7 @@ import { Book } from 'src/app/shared/book/book.model';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
+<<<<<<< Updated upstream
   @Output() currentSelectedBook = new EventEmitter<Book>();
   myBooks: Book[] = [
     new Book(
@@ -36,11 +42,26 @@ export class BookListComponent implements OnInit {
   ];
 
   constructor() {}
+=======
+  @Input() myBooks: Book[];
+  @Input() book: Book;
+  @Input() id: number;
+
+  constructor(
+    private bookshelfService: BookshelfService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+>>>>>>> Stashed changes
 
   ngOnInit(): void {}
 
   handleBookSelected(book: Book) {
     // console.log('BOOK:', book);
     this.currentSelectedBook.emit(book);
+  }
+
+  addNewBook() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 }

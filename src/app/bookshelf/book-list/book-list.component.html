@@ -1,15 +1,27 @@
 <div class="row mb-3">
+<<<<<<< Updated upstream
   <div class="col-md-12">
     <app-book
       *ngFor="let bookElement of myBooks"
       [book]="bookElement"
       (bookSelected)="handleBookSelected(bookElement)"
     ></app-book>
+=======
+  <div class="col-md-12" *ngFor="let bookElement of myBooks; let i = index">
+    <app-book [book]="bookElement" [id]="i"></app-book>
+    <button
+      class="float-right"
+      style="border: none; font-size: 16px"
+      (click)="onRemoveBook(i)"
+    >
+      &minus;
+    </button>
+>>>>>>> Stashed changes
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <button class="btn btn-primary">Add New Book</button>
+    <button class="btn btn-primary" (click)="addNewBook()">Add New Book</button>
   </div>
 </div>
