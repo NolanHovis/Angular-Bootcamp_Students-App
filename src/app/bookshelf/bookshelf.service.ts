@@ -1,12 +1,13 @@
 import { Book } from './../shared/book/book.model';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookshelfService {
-  bookSelected = new EventEmitter<Book>();
-  bookListChanged = new EventEmitter<Book[]>();
+  bookSelected = new Subject<Book>();
+  bookListChanged = new Subject<Book[]>();
 
   // Data sources should be IMMUTABLE
   private myBooks: Book[] = [
@@ -51,7 +52,7 @@ export class BookshelfService {
   // CREATE
   saveBook(book: Book) {
     this.myBooks.push(book);
-    this.bookListChanged.emit(this.myBooks.slice());
+    this.bookListChanged.next(this.myBooks.slice());
   }
 
   // DELETE
@@ -59,7 +60,7 @@ export class BookshelfService {
     if (idx !== -1) {
       // We found a book at the index we passed in
       this.myBooks.splice(idx, 1);
-      this.bookListChanged.emit(this.myBooks.slice());
+      this.bookListChanged.next(this.myBooks.slice());
     }
   }
 }

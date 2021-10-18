@@ -17,6 +17,6 @@ export class BookComponent implements OnInit {
 
   onBookSelected() {
     // Tell App Component that someone clicked on a book!
-    this.bookshelfService.bookSelected.emit(this.book);
+    this.bookshelfService.bookSelected.next(this.book);
   }
 }
