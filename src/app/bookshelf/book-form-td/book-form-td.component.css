@@ -1,8 +1,0 @@
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
-form .ng-invalid.ng-touched {
-  border: 1px solid red;
-}

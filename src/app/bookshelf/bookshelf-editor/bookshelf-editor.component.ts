@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-bookshelf-editor',
@@ -9,6 +10,12 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class BookshelfEditorComponent implements OnInit {
   idx: number;
   isEditMode = false;
+  bookDetails = {
+    title: '',
+    author: '',
+    genre: '',
+    coverImagePath: '',
+  };
 
   constructor(private route: ActivatedRoute) {}
 
@@ -16,7 +23,19 @@ export class BookshelfEditorComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.idx = +params['id'];
       this.isEditMode = params['id'] != null;
-      console.log('%c  this.isEditMode: ', 'color: red;', this.isEditMode);
+
+      // If we are in "edit mode" => set the initial values for "bookDetails"
     });
+  }
+
+  onFormSubmit(formObj: NgForm) {
+    // 1.
+    // 2.
+    // 3.
+    // 4.
+  }
+
+  onFormReset() {
+    // Re-route to the root url of "/bookshelf"
   }
 }
