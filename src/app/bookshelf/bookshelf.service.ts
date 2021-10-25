@@ -44,14 +44,17 @@ export class BookshelfService {
 
   getBook(idx: number) {
     return this.myBooks.slice()[idx];
-
-    // const myArray = ['a', 'b', 'c']
-    // myArray[2] === 'c'
   }
 
   // CREATE
   saveBook(book: Book) {
     this.myBooks.push(book);
+    this.bookListChanged.next(this.myBooks.slice());
+  }
+
+  // UPDATE
+  updateBook(idx: number, updatedBookInfo: Book) {
+    this.myBooks[idx] = updatedBookInfo;
     this.bookListChanged.next(this.myBooks.slice());
   }
 
