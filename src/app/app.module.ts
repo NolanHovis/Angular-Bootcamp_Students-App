@@ -16,6 +16,7 @@ import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-hom
 import { BookshelfEditorComponent } from './bookshelf/bookshelf-editor/bookshelf-editor.component';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookshelfHomeComponent,
     BookshelfEditorComponent,
     NotificationComponent,
+    SortBooksPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

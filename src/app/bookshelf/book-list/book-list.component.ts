@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BookListComponent implements OnInit {
   @Input() book: Book;
   myBooks: Book[] = [];
+  sortField = 'author';
+  sortSwitcher = true;
 
   constructor(
     private router: Router,
@@ -26,6 +28,16 @@ export class BookListComponent implements OnInit {
     this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
       this.myBooks = books;
     });
+  }
+
+  onSort() {
+    this.sortSwitcher = !this.sortSwitcher;
+
+    if (this.sortSwitcher) {
+      this.sortField = 'author';
+    } else {
+      this.sortField = 'title';
+    }
   }
 
   onRemoveBook(idx: number) {
