@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-results.component.css'],
 })
 export class BookResultsComponent implements OnInit {
-  allBooks: Book[] = [];
+  bookResults: Book[] = [];
 
   constructor(
     private bookshelfService: BookshelfService,
@@ -17,8 +17,11 @@ export class BookResultsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Bring Global "apiBooks" array into the Local "allBooks" array
-    this.allBooks = this.libraryService.getBooks();
+    // Bring Global "apiBooks" array into the Local "bookResults" array
+    this.bookResults = this.libraryService.getBooks();
+    this.libraryService.bookListChanged.subscribe((books: Book[]) => {
+      this.bookResults = books;
+    });
   }
 
   onSaveBook(book: Book) {
