@@ -12,7 +12,7 @@ import { Book } from 'src/app/shared/book/book.model';
 export class BookshelfEditorComponent implements OnInit {
   idx: number;
   isEditMode = false;
-  bookDetails = {
+  bookDetails: any = {
     title: '',
     author: '',
     genre: '',
