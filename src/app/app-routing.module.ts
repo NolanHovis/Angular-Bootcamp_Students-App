@@ -5,6 +5,7 @@ import { LibraryComponent } from './library/library.component';
 import { BookshelfComponent } from './bookshelf/bookshelf.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BookResolverService } from './bookshelf/book-resolver.service';
 
 const appRoutes = [
   { path: '', redirectTo: '/bookshelf', pathMatch: 'full' },
@@ -23,10 +24,12 @@ const appRoutes = [
       {
         path: ':id',
         component: BookDetailsComponent,
+        resolve: [BookResolverService],
       },
       {
         path: ':id/edit',
         component: BookshelfEditorComponent,
+        resolve: [BookResolverService],
       },
     ],
   },
