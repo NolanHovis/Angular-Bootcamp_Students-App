@@ -10,32 +10,7 @@ export class BookshelfService {
   bookListChanged = new Subject<Book[]>();
 
   // Data sources should be IMMUTABLE
-  private myBooks: Book[] = [
-    new Book(
-      'Book of Testing',
-      'Will Wilder',
-      'Mystery',
-      'https://source.unsplash.com/50x50/?mystery,book'
-    ),
-    new Book(
-      'Testing Title 2',
-      'Nolan Hovis',
-      'Science',
-      'https://source.unsplash.com/50x50/?science,book'
-    ),
-    new Book(
-      'Fantasy Test',
-      'German Cruz',
-      'Non-Fiction',
-      'https://source.unsplash.com/50x50/?fantasy,book'
-    ),
-    new Book(
-      'Fantasy Test',
-      'Lex Pryor',
-      'Math',
-      'https://source.unsplash.com/50x50/?fantasy,book'
-    ),
-  ];
+  private myBooks: Book[] = [];
 
   // READ
   getBooks() {
@@ -65,5 +40,12 @@ export class BookshelfService {
       this.myBooks.splice(idx, 1);
       this.bookListChanged.next(this.myBooks.slice());
     }
+  }
+
+  setBooks(books: Book[] | []) {
+    console.log('books:', books);
+
+    this.myBooks = books || [];
+    this.bookListChanged.next(this.myBooks.slice());
   }
 }

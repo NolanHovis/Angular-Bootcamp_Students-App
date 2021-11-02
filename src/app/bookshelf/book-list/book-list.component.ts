@@ -1,14 +1,16 @@
 import { Book } from './../../shared/book/book.model';
 import { BookshelfService } from './../bookshelf.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css'],
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
+  private bookListSub: Subscription;
   @Input() book: Book;
   myBooks: Book[] = [];
   sortField = 'author';
@@ -25,9 +27,15 @@ export class BookListComponent implements OnInit {
     this.myBooks = this.bookshelfService.getBooks();
 
     // Listen for changes on the global "myBooks" arary and update the local version
-    this.bookshelfService.bookListChanged.subscribe((books: Book[]) => {
-      this.myBooks = books;
-    });
+    this.bookListSub = this.bookshelfService.bookListChanged.subscribe(
+      (books: Book[]) => {
+        this.myBooks = books;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.bookListSub.unsubscribe();
   }
 
   onSort() {

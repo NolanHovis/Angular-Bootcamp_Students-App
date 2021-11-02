@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BookshelfComponent } from './bookshelf/bookshelf.component';
@@ -18,6 +18,8 @@ import { BookshelfEditorComponent } from './bookshelf/bookshelf-editor/bookshelf
 import { NotificationComponent } from './shared/notification/notification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
+import { AuthComponent } from './shared/auth/auth.component';
+import { AuthInterceptorService } from './shared/auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
     BookshelfEditorComponent,
     NotificationComponent,
     SortBooksPipe,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,13 @@ import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
