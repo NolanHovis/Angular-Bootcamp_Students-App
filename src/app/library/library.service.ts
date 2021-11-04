@@ -34,7 +34,7 @@ export class LibraryService {
     this.apiBooks = [];
 
     // Map over the books array from api
-    books.docs.slice(0, 10).map((book) => {
+    books.docs.slice(0, 5).map((book) => {
       // Destructure the book results
       const { title, author_name, first_publish_year, isbn } = book;
 
