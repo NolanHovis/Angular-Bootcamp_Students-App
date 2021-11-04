@@ -19,4 +19,11 @@
 </div>
 
 <!-- Notification -->
-<app-notification></app-notification>
+<!-- <app-notification></app-notification> -->
+
+<!-- ALERT -->
+<app-alert
+  [alertMsg]="alert"
+  (closeModal)="handleCloseModal()"
+  *ngIf="alert"
+></app-alert>

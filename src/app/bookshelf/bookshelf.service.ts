@@ -24,6 +24,7 @@ export class BookshelfService {
   // CREATE
   saveBook(book: Book) {
     this.myBooks.push(book);
+    this.bookSelected.next(book);
     this.bookListChanged.next(this.myBooks.slice());
   }
 
@@ -37,6 +38,7 @@ export class BookshelfService {
   removeBook(idx: number) {
     if (idx !== -1) {
       // We found a book at the index we passed in
+      this.bookSelected.next(this.myBooks[idx]);
       this.myBooks.splice(idx, 1);
       this.bookListChanged.next(this.myBooks.slice());
     }
