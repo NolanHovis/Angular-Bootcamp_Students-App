@@ -7,6 +7,7 @@ import { BookshelfEditorComponent } from './bookshelf-editor/bookshelf-editor.co
 import { SortBooksPipe } from '../shared/pipes/sortBooks.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { BookshelfRoutingModule } from './bookshelf-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,6 @@ import { BookshelfRoutingModule } from './bookshelf-routing.module';
     BookshelfEditorComponent,
     SortBooksPipe,
   ],
-  imports: [SharedModule, BookshelfRoutingModule],
+  imports: [CommonModule, SharedModule, BookshelfRoutingModule],
 })
 export class BookshelfModule {}
