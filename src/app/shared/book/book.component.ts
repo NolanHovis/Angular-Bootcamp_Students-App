@@ -1,4 +1,3 @@
-import { BookshelfService } from './../../bookshelf/bookshelf.service';
 import { Book } from './book.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -11,12 +10,7 @@ export class BookComponent implements OnInit {
   @Input() book: Book;
   @Input() idx: number;
 
-  constructor(private bookshelfService: BookshelfService) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  onBookSelected() {
-    // Tell App Component that someone clicked on a book!
-    this.bookshelfService.bookSelected.next(this.book);
-  }
 }

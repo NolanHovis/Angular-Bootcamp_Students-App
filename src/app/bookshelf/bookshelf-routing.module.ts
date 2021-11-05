@@ -5,6 +5,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookResolverService } from './book-resolver.service';
 import { BookshelfEditorComponent } from './bookshelf-editor/bookshelf-editor.component';
 import { BookshelfComponent } from './bookshelf.component';
+import { BookshelfHomeComponent } from './bookshelf-home/bookshelf-home.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
     component: BookshelfComponent,
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        component: BookshelfHomeComponent,
+      },
       {
         path: 'new',
         component: BookshelfEditorComponent,
