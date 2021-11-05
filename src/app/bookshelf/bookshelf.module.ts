@@ -18,6 +18,6 @@ import { CommonModule } from '@angular/common';
     BookshelfEditorComponent,
     SortBooksPipe,
   ],
-  imports: [CommonModule, SharedModule, BookshelfRoutingModule],
+  imports: [SharedModule, BookshelfRoutingModule],
 })
 export class BookshelfModule {}

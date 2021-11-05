@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [LibraryComponent, BookSearchComponent, BookResultsComponent],
   imports: [
-    CommonModule,
     SharedModule,
     RouterModule.forChild([{ path: '', component: LibraryComponent }]),
   ],

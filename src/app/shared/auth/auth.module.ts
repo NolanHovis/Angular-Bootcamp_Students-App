@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [AuthComponent],
   imports: [
-    CommonModule,
     SharedModule,
     RouterModule.forChild([{ path: '', component: AuthComponent }]),
   ],

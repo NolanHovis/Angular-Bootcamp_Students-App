@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DropdownDirective,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
 })
 export class SharedModule {}
